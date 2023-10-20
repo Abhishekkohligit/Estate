@@ -21,7 +21,7 @@ export const signin = async (req, res, next) => {
 	try {
 		//checking for valid user email address
 		const validUser = await User.findOne({ email: email });
-		if (!validUser) returnnext(errorHandler(404, "User not found"));
+		if (!validUser) return next(errorHandler(404, "User not found"));
 		//checking password
 		// since it is encrypted need to check the hashed password
 		const validPassword = bcryptjs.compareSync(password, validUser.password);
@@ -30,12 +30,11 @@ export const signin = async (req, res, next) => {
 		//Saving user object id in cookie
 		const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
 		//removing the password from the res.body sent as cookie
-		const{password:pass,...rest}=validUser._doc;
+		const { password: pass, ...rest } = validUser._doc;
 		res
 			.cookie("access_token", token, { httpOnly: true })
 			.status(200)
 			.json(rest);
-
 	} catch (error) {
 		next(error);
 	}
