@@ -7,6 +7,7 @@ import {
 	uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../firebase";
+import { Link } from "react-router-dom";
 
 import {
 	updateUserStart,
@@ -178,6 +179,12 @@ export default function Profile() {
 				>
 					{loading ? "Loading..." : "Update"}
 				</button>
+				<Link
+					to={"/create-listing"}
+					className="bg-green-800 text-white rounded-lg uppercase p-3 text-center hover:opacity-80"
+				>
+					Create Listings
+				</Link>
 			</form>
 
 			<div className="flex justify-between mt-5">
