@@ -49,7 +49,7 @@ export default function CreateListing() {
 				(snapshot) => {
 					const progress =
 						(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					console.log(progress);
+					console.log(Math.round(progress));
 				},
 				(error) => {
 					reject(error);
@@ -85,7 +85,7 @@ export default function CreateListing() {
 					setImageUploadError(`"image Upload  failed "+ ${err.message}`);
 					setUploading(false);
 				});
-			console.log(promises);
+			// console.log(promises);
 		} else {
 			setImageUploadError("you can only upload 6 images");
 			setUploading(false);
