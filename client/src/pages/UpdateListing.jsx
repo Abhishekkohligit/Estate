@@ -51,7 +51,7 @@ export default function UpdateListing() {
 			setFormData(data);
 		};
 		fetchListing();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const storeImage = async (file) => {
@@ -308,7 +308,9 @@ export default function UpdateListing() {
 							/>
 							<div className="flex flex-col items-center">
 								<p className="">Reguler Price</p>
-								<span className="text-xs">($/Month)</span>
+								{formData.type === "rent" && (
+									<span className="text-xs">($/Month)</span>
+								)}
 							</div>
 						</div>
 						{formData.offer && (
@@ -325,7 +327,9 @@ export default function UpdateListing() {
 								/>
 								<div className="flex flex-col items-center">
 									<p className="">Discounted Price</p>
-									<span className="text-xs">($/Month)</span>
+									{formData.type === "rent" && (
+										<span className="text-xs">($/Month)</span>
+									)}
 								</div>
 							</div>
 						)}
