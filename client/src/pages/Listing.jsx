@@ -5,10 +5,22 @@ import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 
-import { FaBath, FaBed,  FaChair,  FaMapMarkerAlt, FaParking, FaShare } from "react-icons/fa";
+import {
+	FaBath,
+	FaBed,
+	FaChair,
+	FaMapMarkerAlt,
+	FaParking,
+	FaShare,
+} from "react-icons/fa";
+
+import { useSelector } from "react-redux";
+import Contact from "../components/Contact";
+
 export default function Listing() {
 	SwiperCore.use([Navigation]);
 	const params = useParams();
+	const { currentUser } = useSelector((state) => state.user);
 	const [listing, setListing] = useState({
 		imageUrls: [],
 		name: "",
@@ -23,9 +35,12 @@ export default function Listing() {
 		parking: false,
 		furnished: false,
 	});
+
+	// console.log(listing.userRef, currentUser);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
-  const [copied, setCopied] = useState(false);
+	const [copied, setCopied] = useState(false);
+	const [contact, setContact] = useState(false);
 	useEffect(() => {
 		const fetchListing = async () => {
 			try {
@@ -141,6 +156,17 @@ export default function Listing() {
 								{listing.furnished ? "Furnished" : "Un-Furnished"}
 							</li>
 						</ul>
+						{currentUser && listing.userRef !== currentUser._id && !contact && (
+							<button
+								onClick={() => {
+									setContact(true);
+								}}
+								className="bg-blue-900 text-white rounded-lg uppercase p-3 hover:opacity-90"
+							>
+								Contact Landloard
+							</button>
+						)}
+						{contact && <Contact listing ={listing}/>}
 					</div>
 				</div>
 			)}
