@@ -126,7 +126,7 @@ export default function Listing() {
 							</p>
 							{listing.offer && (
 								<p className="bg-green-900 w-full max-w-[200px] text-white text-center p-1 rounded-md">
-									${+listing.regularPrice - +listing.discountPrice}
+									${+listing.regularPrice - +listing.discountPrice} Off
 								</p>
 							)}
 						</div>
@@ -166,7 +166,7 @@ export default function Listing() {
 								Contact Landloard
 							</button>
 						)}
-						{contact && <Contact listing ={listing}/>}
+						{contact && <Contact listing={listing} />}
 					</div>
 				</div>
 			)}
