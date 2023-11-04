@@ -22,10 +22,10 @@ export default function Header() {
 		if (searchTermFromUrl) {
 			setSearchTerm(searchTermFromUrl);
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location.search]);
 	return (
-		<header className="bg-blue-300 shadow-md">
+		<header className="bg-[#023047] shadow-md top-0 fixed w-full justify-between z-50">
 			<div className="flex justify-between max-w-6xl mx-auto p-3">
 				<Link to="/">
 					<h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
@@ -35,7 +35,7 @@ export default function Header() {
 				</Link>
 				<form
 					onSubmit={handleSubmit}
-					className="bg-blue-200 p-3 rounded-lg flex items-center"
+					className="bg-transparent border p-3 rounded-lg flex items-center"
 				>
 					<input
 						className="bg-transparent focus:outline-none w-24 sm:w-64"
