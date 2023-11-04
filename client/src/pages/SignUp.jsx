@@ -86,9 +86,9 @@ export default function SignUp() {
 				<Link to={"/sign-in"}>
 					<span className="text-blue-600"> Sign In</span>
 				</Link>
-				<p>(dummy account: email : test@test.com password : test@test.com)</p>
 			</div>
 			{error && <p className="text-red-500 mt-5">{error}</p>}
+			<p>(dummy account: email : test@test.com password : test@test.com)</p>
 		</div>
 	);
 }
