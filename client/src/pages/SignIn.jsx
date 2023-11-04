@@ -13,7 +13,7 @@ export default function SignIn() {
 	// const [error, setError] = useState(null); //error handling  --using redux now
 	// const [loading, setLoading] = useState(false); // set loading  --using redux now
 
-	const { loading, error } = useSelector((state) => state.user);// coming from global state now
+	const { loading, error } = useSelector((state) => state.user); // coming from global state now
 	const navigate = useNavigate(); //navigation post signup
 	const dispatch = useDispatch();
 	//getting user input & form data
@@ -86,13 +86,16 @@ export default function SignIn() {
 					{loading ? "Loading" : "Sign In"}{" "}
 					{/* if loading will not show signup */}
 				</button>
-				<OAuth/>
+				<OAuth />
 			</form>
+
 			<div className="flex gap-2 mt-4">
 				<p>Do Not Have an account? </p>
 				<Link to={"/sign-up"}>
 					<span className="text-blue-600"> Sign Up</span>
 				</Link>
+
+				<p>(dummy account: email : test@test.com password : test@test.com)</p>
 			</div>
 			{error && <p className="text-red-500 mt-5">{error}</p>}
 		</div>
